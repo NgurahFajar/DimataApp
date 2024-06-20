@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.dimataapp.databinding.ActivityAddTicketBinding
-
+import com.google.android.material.snackbar.Snackbar
 
 
 class AddTicketActivity : AppCompatActivity() {
@@ -28,10 +29,58 @@ class AddTicketActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             startActivity(Intent(this@AddTicketActivity, MainActivity::class.java))
             finish()
-
-
         }
 
+        binding.btnSubmit.setOnClickListener {
+            var isAllFieldValid = true
+            binding.apply {
+                if (edtEmail.text.isNullOrEmpty() || !edtEmail.error.isNullOrEmpty())
+                    isAllFieldValid = false
+                if (edtSubject.text.isNullOrEmpty() || !edtSubject.error.isNullOrEmpty())
+                    isAllFieldValid = false
+                if (edtName.text.isNullOrEmpty() || !edtName.error.isNullOrEmpty())
+                    isAllFieldValid = false
+                if (edtMessage.text.isNullOrEmpty() || !edtMessage.error.isNullOrEmpty())
+                    isAllFieldValid = false
+                if (spinnerTeam.selectedItemPosition == 0)
+                    isAllFieldValid = false
+                if (spinnerAgent.selectedItemPosition == 0)
+                    isAllFieldValid = false
+                if (spinnerPriority.selectedItemPosition == 0)
+                    isAllFieldValid = false
+                if (spinnerStatus.selectedItemPosition == 0)
+                    isAllFieldValid = false
+
+                if (isAllFieldValid) {
+                    binding.btnSubmit.alpha = 0.5f // Set alpha to 50% to show button press effect
+                    binding.btnSubmit.postDelayed({
+                        binding.btnSubmit.alpha = 1.0f // Restore alpha to 100% after 200ms
+                        startActivity(Intent(this@AddTicketActivity, MainActivity::class.java))
+                        finish()
+                    }, 200) // Delay in milliseconds
+                } else{
+                    Snackbar.make(
+                        binding.root,
+                        "There is some field that empty or not valid, please check again your data",
+                        Snackbar.LENGTH_SHORT
+                    ).apply {
+                        view.setBackgroundColor(
+                            ContextCompat.getColor(
+                                context,
+                                R.color.red
+                            )
+                        ) // Set background color to red
+                        view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+                            .setTextColor(
+                                ContextCompat.getColor(
+                                    context,
+                                    R.color.white
+                                )
+                            ) // Set text color to white
+                    }.show()
+                }
+            }
+        }
 
         // Setup Spinner Team
         val spinnerTeam: Spinner = binding.spinnerTeam

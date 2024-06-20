@@ -26,8 +26,12 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.btnOpenTicket.setOnClickListener {
-            startActivity(Intent(this@MainActivity, AddTicketActivity::class.java))
-            finish()
+            binding.btnOpenTicket.alpha = 0.5f // Set alpha to 50% to show button press effect
+            binding.btnOpenTicket.postDelayed({
+                binding.btnOpenTicket.alpha = 1.0f // Restore alpha to 100% after 200ms
+                startActivity(Intent(this@MainActivity, AddTicketActivity::class.java))
+                finish()
+            }, 200) // Delay in milliseconds
         }
 
         // Setup SearchView
