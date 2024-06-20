@@ -1,5 +1,6 @@
 package com.example.dimataapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        binding.btnOpenTicket.setOnClickListener {
+            startActivity(Intent(this@MainActivity, AddTicketActivity::class.java))
+            finish()
+        }
+
         // Setup SearchView
         val searchView: SearchView = binding.search
         searchView.queryHint = "Search ticket here"
@@ -47,9 +53,9 @@ class MainActivity : AppCompatActivity() {
         // Dummy data
         tickets.addAll(
             listOf(
-                Ticket(1, "open","John Doe", "john.doe@example.com", "Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"),
-                Ticket(2, "closed", "Jane Smith", "jane.smith@example.com","Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"),
-                Ticket(3, "closed","Michael Johnson", "michael.johnson@example.com", "Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg")
+                Ticket(1, "open","John Doe", "john.doe@example.com", "Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg", "Pasek Oksana"),
+                Ticket(2, "closed", "Jane Smith", "jane.smith@example.com","Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg", "Pasek Oksana"),
+                Ticket(3, "closed","Michael Johnson", "michael.johnson@example.com", "Tidak bisa login di prochain", "Last 5 Minutes", "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg", "Pasek Oksana")
             )
         )
 

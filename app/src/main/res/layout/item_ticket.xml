@@ -17,10 +17,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="8dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
@@ -30,11 +28,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textSize="14sp"
+            android:layout_marginTop="8dp"
             android:textColor="@color/black"
+            android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_image"
-            app:layout_constraintTop_toTopOf="@id/iv_image"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Nama" />
 
         <TextView
@@ -116,9 +115,33 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@id/iv_image"
             app:layout_constraintTop_toBottomOf="@+id/rv_last_message"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="4dp"
             tools:text="Last 5 Minutes" />
+
+        <TextView
+            android:id="@+id/rv_agent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Agent"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@id/tv_last_message"
+            app:layout_constraintTop_toBottomOf="@+id/tv_last_message" />
+
+        <TextView
+            android:id="@+id/tv_agent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/rv_agent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_agent"
+            tools:text="Pasek Oksana" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

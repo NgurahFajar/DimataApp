@@ -67,6 +67,7 @@ class TicketAdapter(private var originalTickets: List<Ticket>) : RecyclerView.Ad
         private val emailTextView: TextView = itemView.findViewById(R.id.tv_email)
         private val subjectTextView: TextView = itemView.findViewById(R.id.tv_subject)
         private val lastMessage: TextView = itemView.findViewById(R.id.tv_last_message)
+        private val agent: TextView = itemView.findViewById(R.id.tv_agent)
 
         fun bind(ticket: Ticket) {
             Glide.with(itemView.context)
@@ -83,6 +84,8 @@ class TicketAdapter(private var originalTickets: List<Ticket>) : RecyclerView.Ad
             } else {
                 status.setImageResource(R.drawable.closed_status)
             }
+
+            agent.text = ticket.agent
         }
     }
 }

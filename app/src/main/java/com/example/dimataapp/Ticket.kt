@@ -7,5 +7,6 @@ data class Ticket(
     val email: String,
     val subject: String,
     val lastMessage: String,
-    val imageUrl: String // URL gambar untuk ImageView di dalam item
+    val imageUrl: String, // URL gambar untuk ImageView di dalam item
+    val agent: String
 )

@@ -45,6 +45,7 @@
                 android:background="@drawable/bg_form"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
+                android:inputType="textEmailAddress"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +79,7 @@
                 android:hint="Place Holder Here"
                 android:textColor="@color/black"
                 android:textColorHint="@color/black"
+                android:inputType="textPassword"
                 android:textSize="14sp" />
         </com.google.android.material.textfield.TextInputLayout>
 
