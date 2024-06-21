@@ -1,5 +1,6 @@
 package com.example.dimataapp
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -52,13 +53,23 @@ class AddTicketActivity : AppCompatActivity() {
                     isAllFieldValid = false
 
                 if (isAllFieldValid) {
-                    binding.btnSubmit.alpha = 0.5f // Set alpha to 50% to show button press effect
-                    binding.btnSubmit.postDelayed({
-                        binding.btnSubmit.alpha = 1.0f // Restore alpha to 100% after 200ms
-                        startActivity(Intent(this@AddTicketActivity, MainActivity::class.java))
-                        finish()
-                    }, 200) // Delay in milliseconds
-                } else{
+                    val newTicket = Ticket(
+                        id = 0, // Temporary ID, will be set in MainActivity
+                        status = spinnerStatus.selectedItem.toString(),
+                        name = edtName.text.toString(),
+                        email = edtEmail.text.toString(),
+                        subject = edtSubject.text.toString(),
+                        lastMessage = edtMessage.text.toString(),
+                        imageUrl = "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg", // Provide a default or selected image URL
+                        agent = spinnerAgent.selectedItem.toString()
+                    )
+
+                    val intent = Intent().apply {
+                        putExtra("new_ticket", newTicket)
+                    }
+                    setResult(Activity.RESULT_OK, intent)
+                    finish()
+                }else{
                     Snackbar.make(
                         binding.root,
                         "There is some field that empty or not valid, please check again your data",

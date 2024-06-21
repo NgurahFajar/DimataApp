@@ -79,10 +79,11 @@ class TicketAdapter(private var originalTickets: List<Ticket>) : RecyclerView.Ad
             lastMessage.text = ticket.lastMessage
 
             // Set status image based on ticket status
-            if (ticket.status.equals("open", ignoreCase = true)) {
-                status.setImageResource(R.drawable.open_status)
-            } else {
-                status.setImageResource(R.drawable.closed_status)
+            when (ticket.status.toLowerCase(Locale.getDefault())) {
+                "open" -> status.setImageResource(R.drawable.open_status)
+                "pending" -> status.setImageResource(R.drawable.open_status)
+                "in progress" -> status.setImageResource(R.drawable.open_status)
+                else -> status.setImageResource(R.drawable.closed_status)
             }
 
             agent.text = ticket.agent
