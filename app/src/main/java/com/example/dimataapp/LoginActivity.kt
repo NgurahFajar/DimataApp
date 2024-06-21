@@ -25,8 +25,6 @@ class LoginActivity : AppCompatActivity() {
         setErrorValidateForm()
 
         binding.apply {
-
-            // btn sign in
             btnSignIn.setOnClickListener {
                 doUserLogin()
             }

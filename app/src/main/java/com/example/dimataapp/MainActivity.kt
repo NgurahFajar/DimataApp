@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var ticketAdapter: TicketAdapter
     private var tickets: MutableList<Ticket> = mutableListOf()
     private var filteredTickets: List<Ticket> = mutableListOf()
-    private var originalTickets: MutableList<Ticket> = mutableListOf()
     private var nextTicketId = 4 // Mulai dari ID yang sesuai dengan data dummy
 
     companion object {
